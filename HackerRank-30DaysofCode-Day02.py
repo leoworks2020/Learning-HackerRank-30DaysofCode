@@ -60,3 +60,30 @@ We round total_cost to the nearest integer and print the result, 15.
 Challenge Start Date =  2023-07-15
 Challenge End Date   =
 """
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'solve' function below.
+#
+# The function accepts following parameters:
+#  1. DOUBLE meal_cost
+#  2. INTEGER tip_percent
+#  3. INTEGER tax_percent
+#
+
+def solve(meal_cost, tip_percent, tax_percent):
+    # Write your code here
+    total_cost = meal_cost + (meal_cost/100*tip_percent) + (meal_cost/100*tax_percent)
+    total_cost = round(total_cost)
+    print(total_cost)
+
+meal_cost = float(input().strip())
+tip_percent = int(input().strip())
+tax_percent = int(input().strip())
+solve(meal_cost, tip_percent, tax_percent)

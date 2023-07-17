@@ -58,7 +58,7 @@ round(total_cost) = 15
 We round total_cost to the nearest integer and print the result, 15.
 
 Challenge Start Date =  2023-07-15
-Challenge End Date   =
+Challenge End Date   =  2023-07-15
 """
 #!/bin/python3
 

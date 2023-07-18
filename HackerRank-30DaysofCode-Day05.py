@@ -49,7 +49,7 @@ Sample Output
 2 x 10 = 20
 ----------------------------------------------------------------------------------------------------------
 Challenge Start Date =  2023-07-18
-Challenge End Date   =
+Challenge End Date   =  2023-07-18
 """
 def do_multiply(number):
     # The loop will consider multiplications from 1 to 10

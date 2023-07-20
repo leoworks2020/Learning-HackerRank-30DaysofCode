@@ -3,7 +3,7 @@
 # Here in this project each Day Challenge will be stored in a separate .py file
 
 # Train for classes
-
+print(f'Classes: Mycar...')
 class Mycar:
     def __init__(self, vendor, model):
         self.vendor = vendor
@@ -23,3 +23,10 @@ p1 = Person("John", 36)
 
 print(p1.name)
 print(p1.age)
+
+# Iterate with strings
+print(f'Iterating with strings...')
+string = "abcdef"
+for w in range(len(string)):
+    print(string[w])
+

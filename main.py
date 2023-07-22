@@ -32,3 +32,18 @@ string = "abcdef"
 for w in range(len(string)):
     print(string[w])
 
+# Dictionary
+n=int(input())
+dict={}
+for i in range(n):
+    key,value=input().split()
+    dict.update({key:value})
+    while True :
+        try:
+            s=input()
+            if(s in dict):
+                print(s+"="+dict[s])
+            else:
+                print("Not found")
+        except:
+            break

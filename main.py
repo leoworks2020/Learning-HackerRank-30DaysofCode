@@ -47,3 +47,9 @@ for i in range(n):
                 print("Not found")
         except:
             break
+
+# Zip Function
+list_1 = [1,2,3]
+list_2 = [4,5,6]
+list_3 = zip(list_1, list_2)
+print(list_3)

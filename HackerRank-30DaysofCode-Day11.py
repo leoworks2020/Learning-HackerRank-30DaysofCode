@@ -90,7 +90,7 @@ import sys
 
 arr = []
 
-def scan_array():
+def scan_array(arr):
     hourglass_sum_record = -9999999999
     for row in range(0, 4):
         for column in range(0, 4):
@@ -101,15 +101,12 @@ def scan_array():
             hg_map_e = arr[row + 2][column]
             hg_map_f = arr[row + 2][column + 1]
             hg_map_g = arr[row + 2][column + 2]
-            hg_map_list = [hg_map_a, hg_map_b, hg_map_c, hg_map_d, hg_map_e, hg_map_f, hg_map_g]
-            hourglass_sum = 0
-            for n in hg_map_list:
-                hourglass_sum += n
+            hourglass_sum = hg_map_a + hg_map_b + hg_map_c + hg_map_d + hg_map_e + hg_map_f + hg_map_g
             if hourglass_sum >= hourglass_sum_record:
                 hourglass_sum_record = hourglass_sum
     return hourglass_sum_record
 
 for _ in range(6):
     arr.append(list(map(int, input().rstrip().split())))
-result = scan_array()
+result = scan_array(arr)
 print(result)

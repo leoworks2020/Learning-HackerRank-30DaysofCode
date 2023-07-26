@@ -77,7 +77,7 @@ The hourglass with the maximum sum (19) is:
 1 2 4
 ----------------------------------------------------------------------------------------------------------
 Challenge Start Date =  2023-07-24
-Challenge End Date   =  2023-07-
+Challenge End Date   =  2023-07-24
 """
 #!/bin/python3
 

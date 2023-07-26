@@ -65,7 +65,7 @@ Query 2: harry
 Harry is one of the keys in our dictionary, so we print harry=12299933.
 ----------------------------------------------------------------------------------------------------------
 Challenge Start Date =  2023-07-21
-Challenge End Date   =  2023-07-
+Challenge End Date   =  2023-07-21
 """
 # Enter your code here. Read input from STDIN. Print output to STDOUT
 phone_book = dict

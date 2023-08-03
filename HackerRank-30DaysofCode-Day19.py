@@ -57,8 +57,8 @@ class Calculator(AdvancedArithmetic):
         divisible_list = []
         sum_divisible_list = 0
         for i in range(1,n+1):
-            quotient, reminder = divmod(n, i)
-            if reminder == 0:
+            quotient, remainder = divmod(n, i)
+            if remainder == 0:
                 divisible_list.append(i)
         sum_divisible_list = sum(divisible_list)
         return sum_divisible_list

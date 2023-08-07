@@ -87,17 +87,14 @@ class Solution:
         self.node_list = []
         self.level = 0
         self.level_max = 0
-        self.previous_node = root
 
         while True:
             if root.left is not None and root.left not in self.node_list:
-                self.previous_node = root
                 root = root.left
                 self.level += 1
                 if self.level_max < self.level:
                     self.level_max = self.level
             elif root.right is not None and root.right not in self.node_list:
-                self.previous_node = root
                 root = root.right
                 self.level += 1
                 if self.level_max < self.level:

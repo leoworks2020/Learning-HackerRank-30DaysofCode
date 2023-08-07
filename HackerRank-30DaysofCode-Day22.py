@@ -63,7 +63,7 @@ Longest Root-to-Leaf Path
  meaning our BST's height = 3. Thus, we print 3 as our answer.
 ----------------------------------------------------------------------------------------------------------
 Challenge Start Date =  2023-08-04
-Challenge End Date   =  2023-08-
+Challenge End Date   =  2023-08-06
 """
 class Node:
     def __init__(self,data):
@@ -83,90 +83,32 @@ class Solution:
         return root
 
     def getHeight(self,root):
-        self.id = []
+        self.node_root = root
         self.node_list = []
-        self.first_node = 0
-        self.previous_node = 0
-        self.height = 0
-        self.max_height = 0
-        self.id.append(root.data)
-        self.node_list.append(root)
+        self.level = 0
+        self.level_max = 0
         self.previous_node = root
-        self.iteration = 1
 
-        if root.left == None and root.right == None:
-            max_current = self.height
-        else:
-            while True:
-                if root.left not in self.node_list and root.left is not None:
-                    self.height += 1
-                    self.node_list.append(root.left)
-                    self.previous_node = root
-                    root = root.left
-                    self.iteration += 1
-                elif root.right not in self.node_list and root.right is not None:
-                    self.height += 1
-                    self.node_list.append(root.right)
-                    self.previous_node = root
-                    root = root.right
-                    self.iteration += 1
-                else:
-                    if self.iteration - 1 < 0:
-                        print("FIM")
-                        return self.max_height
-                    root = self.previous_node
-                    self.iteration -= 1
-                #elif root.left in self.node_list and root.right not in self.node_list:
-                #    root = root.right
-                #    self.node_list.append(root.right)
-
-
-                if root.left == None and root.right == None:
-                    #max_height = self.height
-                    #print("Found the bottom")
-                    if self.max_height < self.height:
-                        self.max_height = self.height
-                    root = self.previous_node
-                    self.iteration -= 1
-                    self.height = 0
-                    #break
-
-            if root.left != None:
-                self.id.append
-            #root = root.left
-        #Write your code here
-#        height_left = 0
-#        height_right = 0
-        max_current = 0
-        max_found = 0
-        max_height_left = 0
-        max_height_right = 0
-
-        #Checking Left Side
-        left_items = []
         while True:
-            if root.left == None:
-                max_current = len(left_items)
-                break
-            else:
-                left_items.append(root.data)
+            if root.left is not None and root.left not in self.node_list:
+                self.previous_node = root
                 root = root.left
-
-        # Checking Right Side
-        left_items = []
-        while True:
-            if root.left == None:
-                max_current = len(left_items)
-                break
+                self.level += 1
+                if self.level_max < self.level:
+                    self.level_max = self.level
+            elif root.right is not None and root.right not in self.node_list:
+                self.previous_node = root
+                root = root.right
+                self.level += 1
+                if self.level_max < self.level:
+                    self.level_max = self.level
             else:
-                left_items.append(root.data)
-                root = root.left
-
-        return max_current
- #           height_left.append("a")
- #           root = root.left
- #           self.getHeight(root)
-
+                self.node_list.append(root)
+                if root == self.node_root:
+                    break
+                root = self.node_root
+                self.level = 0
+        return self.level_max
 
 
 T=int(input())

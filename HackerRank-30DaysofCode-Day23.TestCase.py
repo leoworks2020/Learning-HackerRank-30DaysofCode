@@ -181,12 +181,14 @@ class Solution:
             return True
 
 
+test_case_1_list = [20, 50, 35, 44, 9, 15, 62, 11,13]
+test_case_2_list = [25, 39, 12, 19, 9, 23, 55, 31, 60, 35, 41, 70, 90]
 
-T=int(input())
-myTree=Solution()
-root=None
+T = len(test_case_2_list)
+myTree = Solution()
+root = None
 for i in range(T):
-    data=int(input())
-    root=myTree.insert(root,data)
+    data = test_case_2_list[i]
+    root = myTree.insert(root, data)
 myTree.levelOrder(root)
 

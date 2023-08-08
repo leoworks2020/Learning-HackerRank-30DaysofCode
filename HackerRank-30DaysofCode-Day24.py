@@ -53,7 +53,7 @@ so we remove the two duplicate nodes.
 We then return our updated (ascending) list, which is {1,2,3,4}.
 ----------------------------------------------------------------------------------------------------------
 Challenge Start Date =  2023-08-06
-Challenge End Date   =  2023-08-
+Challenge End Date   =  2023-08-08
 """
 class Node:
     def __init__(self,data):
@@ -81,17 +81,12 @@ class Solution:
 
     def removeDuplicates(self,head):
         #Write your code here
-        node_data_list = []
         current = head
         while current.next is not None:
             if current.data == current.next.data:
                 current.next = current.next.next
-                node_data_list.append(current.data)
                 continue
             current = current.next
-        #if len(list(set(node_data_list))) != len(node_data_list):
-            #current = head
-        #    self.removeDuplicates(head)
         return head
 
 mylist = Solution()

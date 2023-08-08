@@ -81,70 +81,16 @@ class Solution:
 
     def removeDuplicates(self,head):
         #Write your code here
-        #Create a list from all nodes
-        self.node_list_after = []
-        self.node_list_data = []
-        self.node_list_data_after = []
-
-        ###self.node_list, self.node_list_data = self.scanNodes()
-
-        # Iterate over the list removing duplicates
-        ###self.node_list_after = self.node_list
-        ###self.node_list_data_after = self.node_list_data
-        ###self.node_list_range = len(self.node_list)
-
-
         node_data_list = []
         current = head
-        while current:
+        while current.next is not None:
             if current.data == current.next.data:
                 current.next = current.next.next
                 node_data_list.append(current.data)
+                continue
             current = current.next
-        if len(list(set(node_data_list))) != len(node_data_list):
-            self.removeDuplicates(head)
         return head
 
-"""
-        i=0
-        while self.node_list[i].next is not None:
-            if self.node_list[i].data == self.node_list[i + 1].data:
-                self.node_list[i].next = self.node_list[i + 1].next
-                self.node_list_after.pop(i)
-                self.node_list_data_after.pop(i)
-                i = 0
-            else:
-                i += 1
-
-            #if self.node_list[i].data == self.node_list[i + 1].data and self.node_list[i].next is not None:
-            #    self.node_list[i].next = self.node_list[i + 1].next
-            #    self.node_list_after.pop(i)
-            #    self.node_list_data_after.pop(i)
-            #    i = 0
-            #if self.node_list[0].data == self.node_list[1].data and len(self.node_list) == 2:
-            #    self.node_list[0].next = None
-            #    return self.node_list[0]
-        return self.node_list[0]
-
-    def scanNodes(self):
-        self.current_node = None
-        self.next_node = None
-        self.node_list = []
-        self.node_list_data = []
-
-        # Get total number of nodes in the linked list to create a for based on list length
-        self.current_node = head
-        while True:
-            if self.current_node not in self.node_list:
-                self.node_list.append(self.current_node)
-                self.node_list_data.append(self.current_node.data)
-                if self.current_node.next == None:
-                    # Leave the while after capturing the last node in the list (the one which has no next)
-                    break
-                else:
-                    self.current_node = self.current_node.next
-        return self.node_list, self.node_list_data
-"""
 
 mylist = Solution()
 

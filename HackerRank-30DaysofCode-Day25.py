@@ -52,3 +52,86 @@ Challenge Start Date =  2023-08-07
 Challenge End Date   =  2023-08-
 """
 # Enter your code here. Read input from STDIN. Print output to STDOUT
+def check_number(n):
+
+    #Rule 1 - Number 1 is not Prime
+    if n == 1:
+        is_prime = False
+        if debug ==1: print("Rule 1 match!")
+        return is_prime
+
+    #Rule 2 - Number 2 is the only even number which is Prime
+    if n == 2:
+        is_prime = True
+        if debug ==1: print("Rule 2 match!")
+        return is_prime
+
+    #Rule 3 - Check if number has more than 2 factors
+    prime_numbers_list = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+    if n in prime_numbers_list:
+        is_prime = True
+        if debug ==1: print("Rule 3 match!")
+        return is_prime
+
+    #Rule 5 - If number is even and not 2 then is not a Prime number
+    if n % 2 == 0 and n != 2:
+        is_prime=False
+        if debug ==1: print("Rule 5 match!")
+        return is_prime
+
+    #Rule 4 - Checking number against a list of divisors numbers from 1 to 100
+    is_prime = check_number_list(n)
+    if is_prime == False:
+        if debug ==1: print("Rule 4 match!")
+        return is_prime
+
+    #Rule 6 - Using formula 6n +- 1
+    if int(n/6)*6+1 == n:
+        is_prime = True
+        if debug ==1: print("Rule 6 match!")
+        return is_prime
+
+    #Rule 7 - General Sqrt root of a number
+    is_prime = check_sqrt_list(n)
+    return is_prime
+
+
+def check_sqrt_list(n):
+    square_root = math.sqrt(n)
+    square_root_list = []
+    if debug ==1: print(square_root)
+    for i in range(1,int(square_root)+1):
+        if n % i == 0:
+            square_root_list.append(i)
+    square_root_list.append(n)
+    if len(square_root_list) > 2:
+        return False
+    else:
+        if debug ==1: print("Rule 8 match!")
+        return True
+
+
+def check_number_list(n):
+    divisors_list = []
+    for i in range(1,(10000000)+1):
+        if n % i == 0:
+            #print(n % i)
+            divisors_list.append(i)
+    if len(divisors_list) > 2:
+        return False
+    else:
+        return True
+
+
+import math
+debug = 0
+
+T=int(input())
+for i in range(T):
+    n = int(input())
+    result = check_number(n)
+    if result:
+        print("Prime")
+    else:
+        print("Not prime")
+

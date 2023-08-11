@@ -45,10 +45,11 @@ of functions that your colleague already implemented.
 Note: The arrays are indexed from 0.
 
 ----------------------------------------------------------------------------------------------------------
-Challenge Start Date =  2023-08-09
-Challenge End Date   =  2023-08-
+Challenge Start Date =  2023-08-10
+Challenge End Date   =  2023-08-10
 """
 # Enter your code here. Read input from STDIN. Print output to STDOUT
+
 def minimum_index(seq):
     if len(seq) == 0:
         raise ValueError("Cannot get the minimum value index from an empty sequence")
@@ -57,6 +58,37 @@ def minimum_index(seq):
         if seq[i] < seq[min_idx]:
             min_idx = i
     return min_idx
+
+
+class TestDataEmptyArray:
+    @staticmethod
+    def get_array():
+        seq = []
+        return seq
+
+class TestDataUniqueValues:
+    @staticmethod
+    def get_array():
+        seq = [1, 2]
+        return seq
+
+    @staticmethod
+    def get_expected_result():
+        expected_result = minimum_index(TestDataUniqueValues.get_array())
+        return expected_result
+
+class TestDataExactlyTwoDifferentMinimums():
+    @staticmethod
+    def get_array():
+        seq = [0, 1, 0]
+        return seq
+
+    @staticmethod
+    def get_expected_result():
+        #sorted_list = sorted(TestDataExactlyTwoDifferentMinimums.get_array())
+        expected_result = 0
+        return expected_result
+
 
 
 def TestWithEmptyArray():

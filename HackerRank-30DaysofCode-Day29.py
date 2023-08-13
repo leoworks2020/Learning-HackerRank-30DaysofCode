@@ -64,6 +64,8 @@ The maximum possible value of A&B that is also < (K = 2) is 1, so we print 1 on 
 ----------------------------------------------------------------------------------------------------------
 Challenge Start Date =  2023-08-11
 Challenge End Date   =  2023-08-
+v2 - Refactor to reduce execution time:
+
 """
 #!/bin/python3
 
@@ -92,64 +94,30 @@ def bitwiseAnd(N, K):
     numbers = set()
     for i in range(1,N+1):
         numbers.add(i)
-    if DBG == 1: print(f'numbers set = {numbers}')
-
-    bitwise_max_value = 0
-    bitwise_AB_values = []
-    bitwise_AB_values_position = 0
 
     #Loop to check bitwise
-    attempt = 0
     first_number = list(numbers)[0]
+    bitwise_AND_final_list = []
     while first_number < N:
         for second_number in range(first_number+1,len(numbers)+1):
-            attempt += 1
-            #bitwise_A = [first_number, bin(first_number), str(bin(first_number))[-1:]]
-            #bitwise_B = [second_number, bin(second_number), str(bin(second_number))[-1:]]
-            bitwise_A_list = list(bin(first_number))
-            bitwise_A_str = ''.join(map(str, bitwise_A_list))
-            bitwise_A_int = int(bitwise_A_str,2)
-            bitwise_A = format(bitwise_A_int, "08b")
-            bitwise_A_list = list(bitwise_A)
-
-
-            bitwise_B_list = list(bin(second_number))
-            bitwise_B_str = ''.join(map(str, bitwise_B_list))
-            bitwise_B_int = int(bitwise_B_str,2)
-            bitwise_B = format(bitwise_B_int, "08b")
-            bitwise_B_list = list(bitwise_B)
-
-            bitwise_AB_list = []
-
-            for i in range(0,len(bitwise_A_list)):
-                if int(bitwise_A_list[i]) == 1 and int(bitwise_B_list[i]) == 1:
-                    bitwise_AB_list.append(1)
-                else:
-                    bitwise_AB_list.append(0)
-            bitwise_AB_str = ''.join(map(str, bitwise_AB_list))
-            bitwise_AB_int = int(bitwise_AB_str,2)
-
-            if DBG == 1: print(f'{attempt} - A = {bitwise_A_int}, B = {bitwise_B_int}, A&B = {bitwise_AB_int}')
-
-            bitwise_AB_values.append(bitwise_AB_int)
-
+            bitwise_AB_int = first_number & second_number
+            if bitwise_AB_int == K-1:
+                return bitwise_AB_int
+            bitwise_AND_final_list.append(bitwise_AB_int)
         first_number += 1
-    if DBG == 1: print(f'bitwise_AB_values: {bitwise_AB_values}')
 
-    #Check which value in bitwise_AB_values is the maximum and still below K, then capture position
-    for i in range(0,K):
-        if i == K or i+1 > len(bitwise_AB_values):
-            break
-        elif bitwise_AB_values[i] >= bitwise_max_value:
-            bitwise_AB_values_position = i
-    return bitwise_AB_values_position
+    #Check max value for an integer below K
+    result = find_max_less_than_given(bitwise_AND_final_list, K)
+    return result
 
 
-DBG = 0
-OUTPUT_PATH = "output/day29-output.txt"
+def find_max_less_than_given(numbers, given):
+    find_max_less_than_given = max(filter(lambda x: x < given, numbers))
+    return find_max_less_than_given
+
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     t = int(input().strip())
 
@@ -161,8 +129,7 @@ if __name__ == '__main__':
         lim = int(first_multiple_input[1])
 
         res = bitwiseAnd(count, lim)
-        if DBG == 1: print(f'bitwise_operator_max = {res}')
 
-        fptr.write(str(res) + '\n')
+        #fptr.write(str(res) + '\n')
 
-    fptr.close()
+    #fptr.close()
